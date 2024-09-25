@@ -1,0 +1,135 @@
+﻿@model s1411038021_NetFinal.ViewModels.CartViewModel
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+            var message = @Html.Raw(Json.Encode(TempData["message"]));
+            alert(message);
+    </script>
+}
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<style>
+    h3 {
+        width: 100%;
+        justify-content: flex-start;
+        display: flex;
+        color: white;
+    }
+
+    .total {
+        font-size: 30px;
+        font-weight: bolder;
+        justify-content: end;
+        position: fixed;
+        right: 15%;
+        bottom: 10%;
+    }
+
+    th, td {
+        text-align: center;
+    }
+
+    .Cart {
+        width: 100%;
+        display: flex
+    }
+
+    .CartEmpty p {
+        color: white;
+        font-size: 16px;
+        padding: 5px;
+        text-align: center;
+    }
+
+    .CartEmpty a:visited, .CartEmpty a:link {
+        background-color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        color: black;
+        text-decoration: none;
+    }
+
+    .CartEmpty a:hover {
+        background-color: orange;
+        color: white;
+    }
+
+    .CartList {
+        width: 45%;
+    }
+
+    #details-content {
+        width: 60%;
+        position: fixed;
+        right: 0;
+    }
+    .footer{
+        position:fixed;
+
+    }
+</style>
+<h3>您的購物車</h3>
+
+<div class="Cart">
+    <div class="CartList">
+        @if (!Model.CartList.Count.Equals(0))
+        {
+            foreach (var item in Model.CartList)
+            {
+                <div class="CartBox">
+                    <div class="Cartimg">
+                        <img src="@Url.Content("~/Images/ballimg/" + item.bfile)" alt="" />
+                    </div>
+                    <div class="Cart-content">
+                        <ul>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.CartList[0].bname)</span>
+                                @Html.DisplayFor(modelItem => item.bname)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.CartList[0].FlareLevel)</span>
+                                @Html.DisplayFor(modelItem => item.FlareLevel)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.CartList[0].BrandName)</span>
+                                @Html.DisplayFor(modelItem => item.BrandName)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.CartList[0].bprise)</span>
+                                @Html.DisplayFor(modelItem => item.bprise)
+                            </li>
+                            <li>
+                                <span>@Html.DisplayNameFor(model => model.CartList[0].amount)</span>
+                                @Html.DisplayFor(modelItem => item.amount)
+                            </li>
+                        </ul>
+                        <div class="Cart-btn">
+                            <button class="Editbtn newbtn" data-id="@item.CartId">修改數量</button>
+                            @Html.ActionLink("詳細資料", "Item", "Bowling", new { bid = item.bid, brandid = item.Brandid, flareid = item.Flareid }, new { @class = "newbtn" })
+                            @Html.ActionLink("刪除", "Delete", new { CartId = item.CartId }, new { @class = "newbtn" })
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="CartEmpty">
+                <p>您的購物車空空的，趕快去選購吧</p>
+                <p>@Html.ActionLink("商品列表", "product", "Bowling")</p>
+            </div>
+        }
+    </div>
+    <div id="details-content">
+        <div id="details">
+        </div>
+        <div class="total">總金額：@Html.DisplayFor(model => model.Sum)</div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,69 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+.content{
+    align-items:flex-start;
+    color:white;
+}
+.item{
+    display:flex;
+    width:80%;
+    margin:auto;
+}
+.item-img img{
+    height:300px;
+}
+.item-content{
+    display:flex;
+    flex-direction:column;
+    width:80%;
+    margin-left:20px;
+}
+.item-content select,.item-content select option,.black input,.black textarea{
+    color:black;
+}
+.work{
+    text-align:end;
+}
+.createcart{
+    background-color: black;
+    border: none;
+}
+.work a:visited,.work a:link,.work button{
+    padding:5px;
+    border-radius:5px;
+    text-decoration:none;
+    color:white;
+}
+.work input{
+    padding:5px;
+    border-radius:5px;
+    text-decoration:none;
+    color:black;
+}
+.work input:hover{
+    background-color: orange;
+    color: white;
+}
+.edit:hover {
+    background-color: #808080;
+    color:black;
+}
+.delete:hover{
+    background-color:red;
+}
+.createcart:hover{
+    background-color:blue;
+}
+.edit-content {
+    display: flex;
+    width: 100%;
+}
+.edit-content form{
+    display:flex;
+    width:100%;
+}
+.footer{
+    position:fixed;
+}

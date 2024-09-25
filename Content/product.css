@@ -1,0 +1,160 @@
+﻿.row{
+    width:100%;
+}
+
+.brand-title{
+    color: white;
+    font-size: 18px;
+    padding: 10px 10px 0 0;
+    margin-bottom:-10px;
+}
+.product-title {
+    color: white;
+    font-size: 18px;
+    margin-bottom:-10px;
+    font-weight:bolder;
+    display: flex;
+    width:100%;
+    justify-content: space-between;
+}
+.product-title a:visited,.product-title a:link{
+    text-decoration:none;
+    font-size:15px;
+    background-color:white;
+    padding:5px;
+    border-radius:5px;
+    color:black;
+}
+.product-title a:hover{
+    background-color:orange;
+    color:white;
+}
+.brand{
+    display:flex;
+    color: white;
+    font-size: 15px;
+    padding:10px;
+}
+.brand:hover{
+    color:#ff4b00;
+    text-decoration:none;
+}
+
+.product-list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    border-top: white 1px solid;
+    border-bottom: white 1px solid;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.product-box {
+    transition: all .2s ease;
+    display: flex;
+    width: 33%;
+    flex-direction: column;
+    justify-content:flex-end;
+    align-items: center;
+    font-family: 'Comic Sans MS';
+    border-radius:20px;
+    padding:10px;
+}
+.product-box:hover > .ball-img img{
+    transform: rotate(10deg);
+}
+
+.ball-img img {
+    display: flex;
+    width: 100%;
+    transition: all .2s ease;
+}
+
+.ball-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    color:white;
+}
+
+.ball-name {
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+.ball-prise::before {
+    content: "$";
+}
+
+.ball-time {
+    font-size: 12px;
+    text-align: end;
+}
+
+.buy {
+    padding-top:10px;
+    display: flex;
+    z-index: 10;
+    align-items:center;
+}
+
+.buy-item a{
+    font-size: 15px;
+    padding:3px 5px;
+    margin: 0 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    text-decoration:none;
+}
+
+.buy-item a:visited, .buy-item a:link {
+    color: black;
+}
+
+.buy-item a:hover {
+    background-color: #ff4b00;
+    color: white;
+}
+
+.PageList{
+    display:flex;
+}
+.PageList table{
+    width:100%;
+}
+.PageList a:visited,.PageList a:link{
+    padding:0 10px;
+    color:white;
+}
+.PageList a:hover{
+    color:orange;
+}
+.nowpage{
+    background-color:white;
+    color:black;
+    padding:5px 10px;
+    border-radius:5px;
+}
+.col-md-9{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/*RWD*/
+@media screen and (max-width: 700px){
+    .product-box{
+        width:45%;
+        justify-content:center;
+    }
+}
+@media screen and (max-width: 500px) {
+    .product-box{
+        width:80%;
+    }
+    .product-list{
+        flex-direction:column;
+        align-items: center;
+    }
+}

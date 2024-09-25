@@ -1,0 +1,155 @@
+﻿@model s1411038021_NetFinal.ViewModels.ballBrandViewModels
+
+<link href="~/Content/product.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "product";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<style>
+    .brand a:link, .brand a:visited {
+        color: white;
+        text-decoration: none;
+    }
+
+    .brand a:hover{
+        color: orangered;
+    }
+    .nowbrand:link,.nowbrand:visited {
+        background-color: #493b53;
+        border-radius:5px;
+    }
+    .nowbrand:hover {
+        background-color: #9a6c5b;
+        color: white;
+    }
+</style>
+@*
+    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+*@
+<div class="row">
+    <div class="col-md-3">
+        @if (!Model.BrandList.Count.Equals(0))
+        {
+            <p class="brand">@Html.ActionLink("清除品牌條件", "product", new { flareid = Model.Flareid })</p>
+            <p class="brand">@Html.ActionLink("清除油道條件", "product", new { brandid = Model.Brandid })</p>
+            <p class="brand">@Html.ActionLink("清除全部條件", "product")</p>
+            using (Html.BeginForm("product", "Bowling", FormMethod.Get))
+            {
+                <table>
+                    <tr>
+                        <td>
+                            @Html.TextBoxFor(m => m.Search)
+                        </td>
+                        <td>
+                            <input type="submit" value="搜尋" />
+                        </td>
+                    </tr>
+                </table>
+            }
+            <div class="brand-title">
+                品牌
+            </div>
+            <hr />
+            foreach (var item in Model.BrandList)
+            {
+                if (Model.Brandid == item.Brandid)
+                {
+                    <p>@Html.ActionLink(item.Brandname, "product", new { brandid = item.Brandid, flareid = Model.Flareid }, new { @class = "brand nowbrand" })</p>
+                }
+                else
+                {
+                    <p>@Html.ActionLink(item.Brandname, "product", new { brandid = item.Brandid, flareid = Model.Flareid }, new { @class = "brand" })</p>
+                }
+            }
+            <div class="brand-title">
+                球皮強度
+            </div>
+            <hr />
+            foreach (var item in Model.FlareList)
+            {
+                if (Model.Flareid == item.Flareid)
+                {
+                    <p>@Html.ActionLink(item.FlareLevel, "product", new { flareid = item.Flareid, brandid = Model.Brandid }, new { @class = "brand nowbrand" })</p>
+                }
+                else
+                {
+                    <p>@Html.ActionLink(item.FlareLevel, "product", new { flareid = item.Flareid, brandid = Model.Brandid }, new { @class = "brand" })</p>
+                }
+            }
+        }
+    </div>
+    <div class="col-md-9">
+        <div class="product-title">
+            商品總覽
+            @Html.ActionLink("新增商品", "Createball")
+        </div><hr />
+        <div class="product-list">
+            @if (!Model.ballList.Count.Equals(0))
+            {
+                foreach (var item in Model.ballList)
+                {
+                    <div class="product-box ">
+                        <div class="ball-img">
+                            <img src="@Url.Content("~/Images/ballimg/" + item.bfile)" alt="@item.bcontent" />
+                        </div>
+                        <div class="ball-content">
+                            <span class="ball-name">@Html.DisplayFor(modelItem => item.bname)</span>
+                            <span class="ball-prise">@Html.DisplayFor(modelItem => item.bprise)</span>
+                            <span class="ball-time">@Html.DisplayFor(modelItem => item.btime)</span>
+                        </div>
+                        <div class="buy">
+                            <div class="buy-item">
+                                @Html.ActionLink("詳細資料", "Item", new { bid = item.bid, brandid = item.Brandid, flareid = item.Flareid })
+                            </div>
+                            <div class="buy-item">
+                                <button class="addCart newbtn" data-bid="@item.bid">加入購物車</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="brand">無該球種及球皮資訊</p>
+            }
+        </div>
+        @if (!Model.ballList.Count.Equals(0))
+        {
+            <div class="PageList">
+                <table>
+                    <tr>
+                        @if (1 < Model.Paging.NowPage)
+                        {
+                            <td>@Html.ActionLink("|<<|", "product", new { page = 1, Search = Model.Search, flareid = Model.Flareid, brandid = Model.Brandid })</td>
+                            <td>@Html.ActionLink("|<|", "product", new { page = Model.Paging.NowPage - 1, flareid = Model.Flareid, brandid = Model.Brandid })</td>
+                        }
+                        @for (var i = 1; i <= Model.Paging.MaxPage; i++)
+                        {
+                            if (i == Model.Paging.NowPage)
+                            {
+                                <td><b class="nowpage">@i</b></td>
+                            }
+                            else
+                            {
+                                <td><b>@Html.ActionLink(i.ToString(), "product", new { page = i, flareid = Model.Flareid, brandid = Model.Brandid })</b></td>
+                            }
+
+                        }
+                        @if (Model.Paging.NowPage < Model.Paging.MaxPage)
+                        {
+                            <td>@Html.ActionLink("|>|", "product", new { page = Model.Paging.NowPage + 1, flareid = Model.Flareid, brandid = Model.Brandid })</td>
+                            <td>@Html.ActionLink("|>>|", "product", new { page = Model.Paging.MaxPage, flareid = Model.Flareid, brandid = Model.Brandid })</td>
+                        }
+                    </tr>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,102 @@
+﻿@model s1411038021_NetFinal.ViewModels.ballBrandViewModels
+
+@*
+    @if(TempData["message"] != null)
+    {
+        <script type="text/javascript">
+            var message = @Html.Raw(Json.Encode(TempData["message"]));
+            alert(message);
+        </script>
+    }
+*@
+
+<link href="~/Content/Item.css" rel="stylesheet" />
+@{
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<div class="edit-content">
+    @using (Html.BeginForm("Editball", "Bowling", new { bid = Model.ball.bid }, FormMethod.Post, new { enctype = "multipart/form-data" ,}))
+    {
+        <div class="item">
+            <div class="item-img">
+                <img src="@Url.Content("~/Images/ballimg/" + Html.DisplayFor(Model => Model.ball.bfile))" alt="" id="ballimg" />
+                <input accept="image/gif, image/jpeg, image/png" type='file' name="files" id="imgInp" onchange="loadFile(event)" />
+            </div>
+            <div class="item-content">
+                <h2>商品資訊</h2>
+                <table class="table">
+                    <tr>
+                        <td>@Html.DisplayNameFor(Model => Model.ball.bname)</td>
+                        <td class="black">
+                            @Html.TextBoxFor(model => model.ball.bname)
+                            @Html.ValidationMessageFor(model => model.ball.bname)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.ball.bprise)</td>
+                        <td class="black">
+                            @Html.TextBoxFor(model => model.ball.bprise)
+                            @Html.ValidationMessageFor(model => model.ball.bprise)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.ball.bcontent)</td>
+                        <td class="black">@Html.TextAreaFor(model => model.ball.bcontent)</td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Brand.Brandname)</td>
+                        <td>
+                            <select name="brandid">
+                                @foreach (var item in Model.BrandList)
+                                {
+                                    if (Model.ball.Brandid == item.Brandid)
+                                    {
+                                        <option value="@item.Brandid" selected="selected">@item.Brandname</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Brandid">@item.Brandname</option>
+                                    }
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DisplayNameFor(model => model.Flare.FlareLevel)</td>
+                        <td>
+                            <select name="flareid">
+                                @foreach (var item in Model.FlareList)
+                                {
+                                    if (Model.ball.Flareid == item.Flareid)
+                                    {
+                                        <option value="@item.Flareid" selected="selected">@item.FlareLevel</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.Flareid">@item.FlareLevel</option>
+                                    }
+
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr class="work">
+                        <td> </td>
+                        <td>
+                            <input type="submit" value="Save" class="btn btn-default" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "product")
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

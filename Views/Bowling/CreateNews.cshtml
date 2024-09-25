@@ -1,0 +1,13 @@
+﻿@model s1411038021_NetFinal.Models.News
+
+@using (Html.BeginForm("CreateNews", "Bowling"))
+{
+        @Html.TextBoxFor(model => model.ntitle)
+        <span style="color:white;">@Html.ValidationMessageFor(model => model.ntitle)</span>
+        <input type="submit" value="新增消息" />
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

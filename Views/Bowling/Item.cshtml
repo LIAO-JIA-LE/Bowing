@@ -1,0 +1,50 @@
+﻿@model s1411038021_NetFinal.ViewModels.ballBrandViewModels
+<link href="~/Content/Item.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Item";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<h3>@Html.ActionLink("回商品列表","product",new {brandid = Model.Brandid , flareid = Model.Flareid})</h3>
+
+<div class="item">
+    <div class="item-img">
+        <img src="@Url.Content("~/Images/ballimg/" + Html.DisplayFor(Model => Model.ball.bfile))" alt="" />
+    </div>
+    <div class="item-content">
+        <h2>商品資訊</h2>
+        <table class="table">
+            <tr>
+                <td>@Html.DisplayNameFor(Model => Model.ball.bname)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ball.bname)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ball.bprise)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ball.bprise)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ball.bcontent)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ball.bcontent)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Brand.Brandname)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Brand.Brandname)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.Flare.FlareLevel)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.Flare.FlareLevel)</td>
+            </tr>
+            <tr>
+                <td>@Html.DisplayNameFor(model => model.ball.btime)</td>
+                <td>@Html.DisplayFor(modelItem => modelItem.ball.btime)</td>
+            </tr>
+            <tr class="work">
+                <td> </td>
+                <td>
+                    @Html.ActionLink("修改資訊", "Editball", new { bid = Model.ball.bid, flareid = Model.Flareid, brandid = Model.Brandid }, new { @class = "edit" })
+                    @Html.ActionLink("刪除商品", "Deleteball", new { bid = Model.ball.bid }, new { @class = "delete" })
+                    <button class="addCart createcart" data-bid="@Model.ball.bid">加入購物車</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

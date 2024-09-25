@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="~/Content/index.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Bowlingballs</title>
+    @Styles.Render("~/Content/index.css")
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body style="padding-bottom: 0; background-color: black;">
+    <script src="~/Content/js.js"></script>
+    <div class="header">
+        <div class="header-top">
+            <div class="header-logo"><a href="~/Bowling/index"><img src="~/Images/logo.png" alt="Logo" /></a></div>
+            <div class="header-nav">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("商品資訊", "product", "Bowling")
+                    </li>
+                    <li>
+                        @Html.ActionLink("商品資訊", "product", "Bowling")
+                    </li>
+                    <li>
+                        @Html.ActionLink("商品資訊", "product", "Bowling")
+                    </li>
+                </ul>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li><a href="~/Bowling/UserEdit" title="會員登入"><i class="fa-solid fa-user fa-xl"></i></a></li>
+                    <li><a href="~/MyCart" title="購物車"><i class="fa-solid fa-cart-shopping fa-xl"></i></a></li>
+                    <li class="list-button"><i onclick="myFunction()" class="dropbtn fa-solid fa-list fa-xl"></i></li>
+                </ul>
+            </div>
+        </div>
+        <div id="myDropdown" class="dropdown-content">
+            <ul>
+                <li>
+                    <p>@Html.ActionLink("商品資訊", "product", "Bowling")</p>
+                </li>
+                <li>
+                    <p>@Html.ActionLink("商品資訊", "product", "Bowling")</p>
+                </li>
+                <li>
+                    <p>@Html.ActionLink("商品資訊", "product", "Bowling")</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        @RenderBody()
+    </div>
+    <div class="footer">
+        <ul>
+            <li><a href="#">聯絡我們</a></li>
+            <li><a href="#">粉絲專頁</a></li>
+            <li>1411038021</li>
+            <li>資管技優二1</li>
+            <li>廖家樂</li>
+        </ul>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

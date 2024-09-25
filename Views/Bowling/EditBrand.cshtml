@@ -1,0 +1,43 @@
+﻿@model s1411038021_NetFinal.Models.Brand
+
+@{
+    ViewBag.Title = "EditBrand";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<style>
+    .editnew-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+    }
+
+    .editnew {
+        display: flex;
+        margin: 20px;
+    }
+
+    .editbtn {
+        display: flex;
+    }
+    .footer {
+        position: fixed;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <div class="editnew-content">
+        <div class="editnew">
+            @Html.TextBoxFor(Model => Model.Brandname)
+            @Html.ValidationMessageFor(Model => Model.Brandname)
+        </div>
+        <div class="editbtn">
+            <input type="submit" value="確認" class="newbtn" />
+        </div>
+    </div>
+}
+
+@Html.ActionLink("返回", "UserEdit", new { }, new { @class = "newbtn" })
+

@@ -1,0 +1,272 @@
+﻿*{
+    padding:0;
+    margin:0;
+}
+body{
+    padding-bottom:0px;
+    background-color:black;
+}
+
+/*導覽列設定*/
+.header {
+    padding: 10px 0;
+    display: flex;
+    width:100%;
+    position:fixed;
+    z-index:20;
+    top:0;
+    left:0;
+    background-color: #7c7b84;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+.header-top {
+    height: auto;
+    display: flex;
+    align-items: center;
+    width: 90%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.header-logo a{
+    height:50px;
+    display:flex;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+}
+.header-right ul{
+    align-items:center;
+    display:flex;
+    list-style:none;
+    margin-bottom:0;
+}
+.header-right li{
+    margin:0 5px;
+    padding:5px;
+    display:flex;
+}
+.header-right a:visited, .header-right a:link {
+    color:black;
+}
+.header-right a:hover, .dropbtn:hover{
+    color: white;
+}
+.list-button i{
+    display:none;
+}
+
+/*list下拉式選單*/
+.dropbtn {
+    background-color: #7c7b84;
+    border: none;
+    color:black;
+    cursor:pointer;
+}
+.show {
+    display: flex;
+}
+.showNews{
+    display: contents;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    background-color:#7c7b84;
+    color:white;
+    display: none;
+    top:70px;
+    left:0;
+    width:100%;
+}
+.dropdown-content ul{
+    list-style:none;
+    width:100%;
+}
+.dropdown-content ul li{
+}
+.dropdown-content ul li a{
+    display:flex;
+    color:black;
+    padding:8px;
+    justify-content:center;
+    font-weight:bolder;
+    font-size:15px;
+}
+.dropdown-content a:hover{
+    text-decoration:none;
+    background-color:#201e1e;
+    color:white;
+}
+
+/*導覽列dropdown設定*/
+.navbar-nav > li > a {
+    color:black;
+    margin:0 5px;
+    font-weight:bolder;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    background-color: #5f4367;
+    color: black;
+}
+
+/*主要內容區*/
+.content{
+    display:flex;
+    justify-content:center;
+    margin:70px 0 auto;
+    flex-direction:column;
+    padding:50px;
+    padding-bottom: 80px;
+    align-items:center;
+    min-height:100%;
+}
+.newbtn, .newbtn:visited, .newbtn:link {
+    background-color: white;
+    color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+.newbtn:hover {
+    background-color: orange;
+    color:white;
+}
+
+/*內容樣式*/
+.main-caroisel {
+    display: flex;
+    justify-content: center;
+}
+
+.new-list {
+    color: white;
+    width: 80%;
+}
+.new-list h2 span{
+    font-size:15px;
+}
+.createnew-btn{
+    text-decoration: none;
+    font-size: 12px;
+    background-color: white;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+}
+.createnew-btn:hover {
+    background-color: orange;
+    color: white;
+}
+#CreateNews{
+    color: black;
+    display: none;
+}
+.newtitle{
+    display:flex;
+    margin:10px;
+    align-items:center;
+}
+.title{
+    font-size:20px;
+    font-weight:bolder;
+}
+#editnew{
+    display:none;
+    color:black;
+}
+
+/*頁尾設定*/
+.footer{
+    display:flex;
+    position:relative;
+    z-index:30;
+    bottom:0;
+    width:100%;
+    background-color:#6c6971;
+    justify-content:center;
+}
+.footer ul{
+    align-items:center;
+    display:flex;
+    list-style:none;
+    margin:auto;
+    padding:20px 0;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+.footer ul li{
+    padding: 5px 10px;
+}
+.footer ul li::after{
+    content:" ";
+    margin-left:15px;
+    border-right:solid 1px white;
+}
+.footer ul li:last-child::after{
+    display:none;
+}
+.footer a:visited,.footer a:link,.footer ul li{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+}
+
+/*購物車CSS*/
+.CartList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color:white;
+}
+.CartBox {
+    padding: 10px;
+    margin: 5px;
+    /* border: 1px white solid; */
+    flex-direction:column;
+    display: flex;
+}
+.Cart-content ul{
+    list-style:none;
+}
+.Cart-content ul li{
+    display: flex;
+    justify-content: space-between;
+}
+.Cart-content ul li span{
+    padding-right:10px
+}
+.Cart-content ul li span::after{
+    content:"：";
+    color:white;
+}
+.Cartimg img {
+    width: 120px;
+}
+
+.total {
+    color: white;
+    font-size: 15pt;
+}
+
+/*RWD設定*/
+@media screen and (max-width: 768px){
+    .header-nav{
+        display:none;
+    }
+    .list-button i{
+        display:block;
+    }
+    .content{
+        padding:0;
+        padding-bottom: 20px;
+    }
+    
+}

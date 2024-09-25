@@ -1,0 +1,68 @@
+﻿@model s1411038021_NetFinal.ViewModels.ballBrandViewModels
+
+@{
+    ViewBag.Title = "UserEdit";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+<style>
+    th, td {
+        width: 30%;
+        color: white;
+        text-align: center;
+    }
+    td a:visited, td a:link {
+        background-color: white;
+        color: black;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+    td a:hover {
+        background-color: orange;
+        color: white;
+    }
+    h2{
+        color:white;
+    }
+    .footer{
+        position:fixed;
+    }
+</style>
+<h2>品牌管理</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandList[0].Brandid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BrandList[0].Brandname)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model.BrandList)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brandid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brandname)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditBrand", new { Brandid = item.Brandid }) |
+                @Html.ActionLink("Delete", "DeleteBrand", new { Brandid = item.Brandid })
+            </td>
+        </tr>
+    }
+</table>
+
+<div id="CreateNews">
+    @Html.Action("CreateNewBrand")
+</div>
+<button onclick="CreateNews()" class="createnew-btn">新增品牌</button>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

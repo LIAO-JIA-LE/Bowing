@@ -1,0 +1,30 @@
+﻿@model s1411038021_NetFinal.Models.Brand
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+            var message = @Html.Raw(Json.Encode(TempData["message"]));
+            alert(message);
+    </script>
+}
+<style>
+    #CreateNews input {
+        color: black;
+    }
+    #CreateNews span {
+        color: white;
+    }
+</style>
+
+@using (Html.BeginForm("CreateNewBrand", "Bowling"))
+{
+    @Html.TextBoxFor(model => model.Brandid)
+    <span>@Html.ValidationMessageFor(model => model.Brandid)</span>
+    @Html.TextBoxFor(model => model.Brandname)
+    <span>@Html.ValidationMessageFor(model => model.Brandname)</span>
+    <input type="submit" value="新增品牌" />
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
