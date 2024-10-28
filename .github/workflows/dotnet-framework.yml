@@ -21,8 +21,8 @@ jobs:
 
       - name: Setup .NET Framework
         run: |
-          echo "::set-env name=DOTNET_ROOT::C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin"
-          echo "::add-path::C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin"
+          echo "DOTNET_ROOT=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin" >> $GITHUB_ENV
+          echo "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin" >> $GITHUB_PATH
 
       - name: Build the solution
         run: msbuild s1411038021-NetFinal.sln /p:Configuration=Release
