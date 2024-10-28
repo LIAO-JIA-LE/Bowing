@@ -19,6 +19,9 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1
 
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
       - name: Setup .NET Framework
         run: |
           echo "DOTNET_ROOT=C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\MSBuild\\Current\\Bin" >> $GITHUB_ENV
